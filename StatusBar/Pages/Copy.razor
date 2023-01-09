@@ -1,0 +1,20 @@
+﻿@page "/copy"
+
+<h1>COOOPYYYYY</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+Clickme pops out of page with <code>App.Current.MainPage.Navigation.PopModalAsync();</code>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+
+        App.Current.MainPage.Navigation.PopModalAsync();
+    }
+}

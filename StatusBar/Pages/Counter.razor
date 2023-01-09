@@ -1,0 +1,51 @@
+﻿@page "/counter"
+@inject NavigationManager navigationManager
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+
+<button class="btn btn-primary" @onclick="IncrementCount">button 1</button>
+<p>button 1 uses pushmodalasync to launch "MorePage" which displays a Contentpage with a Blazor webview <br />like a "normal" .NET MAUI Blazor app </p>
+
+
+
+<button class="btn btn-primary" @onclick="GoToPage">button 2</button>
+Button 2 uses function <code>navigationManager.NavigateTo("/copy");</code> and do nothing
+<br /><br />
+<button class="btn btn-primary" @onclick="GoToPage">button 3</button>
+Button 2 uses function <code>navigationManager.NavigateTo("Copy");</code> and do nothing
+
+<br /><br />
+Link below use <code>NavLink</code> to fetchdata 
+<NavLink  href="fetchdata">
+                Fetch data with NavLink, no?
+            </NavLink>
+
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+
+        App.Current.MainPage.Navigation.PushModalAsync(new MorePage());
+    }
+
+
+    private void GoToPage()
+    {
+        navigationManager.NavigateTo("/copy");
+    }
+
+
+    private void GoToPage3()
+    {
+        navigationManager.NavigateTo("Copy");
+    }
+
+
+}
